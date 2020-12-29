@@ -22,7 +22,7 @@
         <textarea name="Text" cols="80" rows="24" id="Input1">{{fieldtext}}</textarea>
         <br/>
         <input type="submit" value="Theorize!"/>
-        <input type="reset"  value="clear" style="color: blue;"/>
+        <!-- <input type="reset"  value="clear" style="color: blue;"/> -->
     </form>
     {% if calculation_success == True %}
         <p>
@@ -40,8 +40,8 @@
     {% if calculation_success == False %}
         <br/>
         <p>
-            <body>{{error}}</body>
-            <body>{{input1}} {{operation}} {{input2}} = "{{result}}"</body>
+            <body>Something went wrong</body>
+            
         </p>
     {% endif %}
 </body>
