@@ -15,17 +15,17 @@
         <a href="{{ url_for('home') }}">(HOME)</a>
     </div>
     <h1>How this tool works</h1>
-    <p>The Theorizr uses a bag-of-words approach to classifying texts. 
-    What this means is that it looks at what you've written and tries to gues which critical theorist is 
-    likeliest to have written it. The data it looks at to make a decision is what 
-    <em>words</em> you used, and with what <em>frequency</em>. 
-    It compares your word usage patterns to those of the critical 
-    theorists in the database.</p>
+    <p>The Theorizr looks at what you've written and tries to guess which critical theorist is 
+    likeliest to have written it. It uses a bag-of-words approach to classifying texts, which 
+    means that it looks at what&nbsp;<em>words</em>&nbsp;you used, and with what&nbsp;<em>frequency, </em>to make a decision. 
+    It compares your word usage patterns to those of the critical theorists in the database.
 <p>The math behind this classification is a support-vector machine, which is quite complicated. 
 You can read about it on <a href="https://en.wikipedia.org/wiki/Support_vector_machine">Wikipedia</a>, 
 and it boils down to mapping the features of various texts in such a way that they are divided 
 into clear groups (in this case, different authors). Then it assesses a new text (yours) 
 and sees where on the map it lands.</p>
+
+<p>The number of authors in the database is constrained by size and processing power limits.</p>
     
     <h1>How the authors speak</h1>
     
@@ -36,5 +36,9 @@ and sees where on the map it lands.</p>
     <p>{{line}}</p>
     {% endfor %}
 <p>&nbsp;</p>
+<p>This web app was developed by Eduard Saakashvili in 2020. 
+The source code is available at <a href="https://github.com/eskblog/theory-classifier">github.com/eskblog/theory-classifier</a>
+<br/>
+Eduard can be reached at eduardsaakashvili [at] gmail [dot] com</p>
 </body>
 </html>
