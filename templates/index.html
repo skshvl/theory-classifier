@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='mainpage.css') }}"/>
+</head>
+<body>
+    <h1>Theorizr</h1>
+    <img src="static/img/collage.png" alt = "Collage of theorists" class = "center" style = "width:20em; height:auto;">
+    <br/>
+    <body><b>Which critical theorist are you?</b> Paste in a paper or article you've written and find out using machine learning.
+    <a href="{{ url_for('about') }}">(How this works)</a>
+    </body>
+    <br/>
+    <br/>
+    <form method="post" action="{{ url_for('analyze') }}" id="text_form">
+        <!-- The textarea class is what we need to make a large text field
+        Curcialy, the id is only fr CSS. name is what passes the value-->
+        <textarea name="Text" cols="80" rows="24" id="Input1">{{fieldtext}}</textarea>
+        <br/>
+        <input type="submit" value="Theorize!"/>
+        <input type="reset"  value="clear" style="color: blue;"/>
+    </form>
+    {% if calculation_success == True %}
+        <p>
+            <br/>
+            <div style = "font-size:200%"> This sounds like <b>{{topguess}}</b>!</div>
+            <!--  <br/>-->
+            <!--Here is some information about this theorist: {{topguessdescription}}-->
+            <br/>
+            And here are some of the words that set your writing apart, compared to the theorists in our sample. This means you use them most frequently <i>relative</i> to the average theorist:
+            <br/>
+            <br/>
+            {{topwords_newtext}}
+            {% endif %}
+        </p>
+    {% if calculation_success == False %}
+        <br/>
+        <p>
+            <body>{{error}}</body>
+            <body>{{input1}} {{operation}} {{input2}} = "{{result}}"</body>
+        </p>
+    {% endif %}
+</body>
+</html>

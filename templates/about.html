@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css"
+    href="{{ url_for('static', filename='mainpage.css') }}"/>
+</head>
+
+<body>
+    <br/>
+    <br/>
+    <div style="text-align: center">
+        <a href="{{ url_for('home') }}">(HOME)</a>
+    </div>
+    <h1>How this tool works</h1>
+    <p>The Theorizr uses a bag-of-words approach to classifying texts. 
+    What this means is that it looks at what you've written and tries to gues which critical theorist is 
+    likeliest to have written it. The data it looks at to make a decision is what 
+    <em>words</em> you used, and with what <em>frequency</em>. 
+    It compares your word usage patterns to those of the critical 
+    theorists in the database.</p>
+<p>The math behind this classification is a support-vector machine, which is quite complicated. 
+You can read about it on <a href="https://en.wikipedia.org/wiki/Support_vector_machine">Wikipedia</a>, 
+and it boils down to mapping the features of various texts in such a way that they are divided 
+into clear groups (in this case, different authors). Then it assesses a new text (yours) 
+and sees where on the map it lands.</p>
+    
+    <h1>How the authors speak</h1>
+    
+    <p>Each author has some words that identify them most strongly – i.e. when we encounter that word, they are the first author
+    in our training set that we think of. Here are the top such words for each theorist in our training data:</p>
+    
+    {% for line in top_words %}
+    <p>{{line}}</p>
+    {% endfor %}
+<p>&nbsp;</p>
+</body>
+</html>
